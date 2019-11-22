@@ -15,7 +15,7 @@ public class Account {
     private User user;
 
     @Column
-    private Integer cash;
+    private Integer ammount;
 
     //TODO сделать конструктор
     //TODO переопределить hashCode(), equals(), toString()
@@ -28,15 +28,15 @@ public class Account {
         return user;
     }
 
-    public Integer getCash() {
-        return cash;
+    public Integer getAmmount() {
+        return ammount;
     }
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    public void setCash(Integer cash) {
-        this.cash = cash;
+    public void setAmmount(Integer ammount) {
+        this.ammount = ammount;
     }
 }

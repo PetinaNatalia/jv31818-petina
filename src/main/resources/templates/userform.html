@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать пользователя</title>
+
+</head>
+<body>
+<h2>Добавить пользователя</h2>
+<form action="" method="post" th:action="@{/userform}" th:object="${user}">
+    <label for="name">Имя:</label><br/>
+    <textarea id="name" th:field="*{name}"></textarea><br/>
+    <label for="surname">Фамилия:</label><br/>
+    <textarea id="surname" th:field="*{surname}"></textarea><br/>
+    <label for="username">Логин:</label><br/>
+    <textarea id="username" th:field="*{username}"></textarea><br/>
+    <label for="password">Пароль:</label><br/>
+    <textarea id="password" th:field="*{password}"></textarea><br/>
+    <label for="phone">Телефон</label><br/>
+    <textarea id="phone" th:field="*{phone}"></textarea><br/>
+    <label for="mail">Почта</label><br/>
+    <textarea id="mail" th:field="*{mail}"></textarea><br/>
+    <button type="submit">Сохранить</button>
+</form>
+</br>
+</body>
+</html>

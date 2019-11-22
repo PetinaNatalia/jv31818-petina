@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Сделать перевод</title>
+</head>
+<body>
+<h2>Сделать перевод</h2>
+<form action="" method="post" th:action="@{/transactionform}" th:object="${operation}">
+    <label for="account">Номер счета списания:</label><br/>
+    <textarea id="account" th:field="*{account}"></textarea><br/>
+    <label for="targetAccount">Номер счета для перевода:</label><br/>
+    <textarea id="targetAccount" th:field="*{targetAccount}"></textarea><br/>
+    <label for="operationAmmount">Сумма:</label><br/>
+    <textarea id="operationAmmount" th:field="*{operationAmmount}"></textarea><br/>
+
+    <button type="submit">Перевести</button>
+</form>
+</br>
+</body>
+</html>
