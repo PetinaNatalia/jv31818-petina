@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать счет</title>
+</head>
+<body>
+<h2>Создать счет</h2>
+<form action="" method="post" th:action="@{/accountform}" th:object="${account}">
+    <label for="ammount">Сумма:</label><br/>
+    <textarea id="ammount" th:field="*{ammount}"></textarea><br/>
+    <button type="submit">Сохранить</button>
+</form>
+</br>
+</body>
+</html>

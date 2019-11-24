@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница пользователя</title>
+</head>
+<body>
+    </br>
+    <form action="/accountform/">
+        <button>Создать счет</button>
+    </form>
+    </br>
+    </br>
+    <form action="/transactionform/">
+        <button>Сделать перевод</button>
+    </form>
+    </br>
+    <h1>Список cчетов</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Сумма</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script src="/js/jquery.js"></script>
+    <script>
+    let tbody = $("tbody");
+    $.ajax({
+        url: "http://localhost:8080/dashboard",
+        method: "POST",
+        dataType: "json",
+        success: (response) => {
+            response.forEach(
+                    (account) => {
+                        let buttons = $("<td>");
+                        buttons.append($("<a>").attr("href", account.id).addClass("delete").text("Удалить"));
+
+                        $("<tr>")
+                            .append($("<td>").text(account.id))
+                            .append($("<td>").text(account.ammount))
+                            .append(buttons)
+                            .appendTo(tbody);
+
+                        buttons.find(".delete").click((event) => {
+                            event.preventDefault();
+                            let url = "http://localhost:8080/dashboard/" + $(event.target).attr("href");
+                            $.ajax({
+                                url: url,
+                                method: "DELETE",
+                                success: (response) => {
+                                console.log(response);
+                                }
+                            });
+                        });
+                    }
+            );
+        },
+        error: () => { alert("Ошибка получения списка счетов"); }
+    });
+    </script>
+</body>
+</html>

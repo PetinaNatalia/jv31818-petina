@@ -1,5 +1,7 @@
 package org.itstep.msk.app.entity;
 
+import org.itstep.msk.app.enums.OperationType;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,12 +12,19 @@ public class Operation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column
+    OperationType operationType;
+
+    @Column
+    Integer operationAmmount;
+
     @ManyToOne(targetEntity = Account.class)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
-    @Column
-    private String blank;
+    @ManyToOne(targetEntity = Account.class)
+    @JoinColumn(name = "target_account_id", referencedColumnName = "id")
+    private Account targetAccount;
 
     //TODO сделать конструктор
     //TODO переопределить hashCode(), equals(), toString()
@@ -24,19 +33,35 @@ public class Operation {
         return id;
     }
 
+    public OperationType getOperationType() {
+        return operationType;
+    }
+
+    public Integer getOperationAmmount() {
+        return operationAmmount;
+    }
+
     public Account getAccount() {
         return account;
     }
 
-    public String getBlank() {
-        return blank;
+    public Account getTargetAccount() {
+        return targetAccount;
+    }
+
+    public void setOperationType(OperationType operationType) {
+        this.operationType = operationType;
+    }
+
+    public void setOperationAmmount(Integer operationAmmount) {
+        this.operationAmmount = operationAmmount;
     }
 
     public void setAccount(Account account) {
         this.account = account;
     }
 
-    public void setBlank(String blank) {
-        this.blank = blank;
+    public void setTargetAccount(Account targetAccount) {
+        this.targetAccount = targetAccount;
     }
 }
