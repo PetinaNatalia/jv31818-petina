@@ -13,10 +13,10 @@ public class Operation {
     private Integer id;
 
     @Column
-    OperationType operationType;
+    private OperationType operationType;
 
     @Column
-    Integer operationAmmount;
+    private Integer operationAmmount;
 
     @ManyToOne(targetEntity = Account.class)
     @JoinColumn(name = "account_id", referencedColumnName = "id")

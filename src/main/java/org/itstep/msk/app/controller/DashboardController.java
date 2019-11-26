@@ -25,11 +25,11 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 public class DashboardController {
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
     @Autowired
-    OperationRepository operationRepository;
+    private OperationRepository operationRepository;
 
     @GetMapping("/dashboard")
     public String username(){
@@ -44,6 +44,7 @@ public class DashboardController {
     }
 
     @DeleteMapping("/dashboard/{accountId}")
+    @ResponseBody
     public String delete(
             @PathVariable Integer accountId,
             HttpServletResponse response

@@ -30,7 +30,7 @@
     <script>
     let tbody = $("tbody");
     $.ajax({
-        url: "http://localhost:8080/dashboard",
+        url: "/dashboard",
         method: "POST",
         dataType: "json",
         success: (response) => {
@@ -47,12 +47,14 @@
 
                         buttons.find(".delete").click((event) => {
                             event.preventDefault();
-                            let url = "http://localhost:8080/dashboard/" + $(event.target).attr("href");
+                            let parent = $(event.target).parent().parent();
+                            let url = "/dashboard/" + $(event.target).attr("href");
                             $.ajax({
                                 url: url,
                                 method: "DELETE",
                                 success: (response) => {
-                                console.log(response);
+                                    console.log(response);
+                                    parent.remove();
                                 }
                             });
                         });

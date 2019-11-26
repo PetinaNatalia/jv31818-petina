@@ -44,14 +44,15 @@ public class AdminController {
 
 
     @DeleteMapping("/admin/{userId}")
+    @ResponseBody
     public String delete(
             @PathVariable Integer userId,
             HttpServletResponse response
     ) {
 
-        Optional<User> car = userRepository.findById(userId);
-        if (car.isPresent()) {
-            userRepository.delete(car.get());
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            userRepository.delete(user.get());
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

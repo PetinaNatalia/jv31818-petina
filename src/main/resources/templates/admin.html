@@ -31,7 +31,7 @@
     <script>
         let tbody = $("tbody");
         $.ajax({
-                url: "http://localhost:8080/admin",
+                url: "/admin",
                 method: "POST",
                 dataType: "json",
                 success: (response) => {
@@ -53,12 +53,14 @@
 
                             buttons.find(".delete").click((event) => {
                                 event.preventDefault();
-                                let url = "http://localhost:8080/admin/" + $(event.target).attr("href");
+                                let parent = $(event.target).parent().parent();
+                                let url = "/admin/" + $(event.target).attr("href");
                                 $.ajax({
                                     url: url,
                                     method: "DELETE",
                                     success: (response) => {
-                                    console.log(response);
+                                        console.log(response);
+                                        parent.remove();
                                     }
                                 });
                             });
